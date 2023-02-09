@@ -1,0 +1,24 @@
+<a class="link-info" href="#" routerLink="/createstudent">Create Student</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">SchoolId</th>
+            <th scope="col">Grade</th>
+            <th scope="col">Delete</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let val of students1">
+            <td>{{val.id}}</td>
+            <td>{{val.name}}</td>
+            <td>{{val.schoolId}}</td>
+            <td>{{val.grade}}</td>
+            <td>
+                <a class="link-info" (click)="DeleteStudent(val.id)">Delete</a>
+            </td>
+        </tr>
+    </tbody>
+</table>

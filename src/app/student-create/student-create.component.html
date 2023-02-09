@@ -1,0 +1,43 @@
+<div class="container">
+  <div class="row">
+    <div class="form-bg">
+      <form [formGroup]="form" (ngSubmit)="RegisterStudent()">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Registration</h3>
+          </div>
+          <div class="panel-body">
+
+            <div class="form-group">
+              <label for="id">ID</label>
+              <input id="id" type="text" class="form-control" readonly formControlName="id" name="id">
+            </div>
+            <div class="form-group">
+              <div>
+              <label for="name">Name <span class="text-danger">*</span></label>
+              <input id="name" type="text" class="form-control" formControlName="name" name="name"
+                [ngClass]="{ 'is-invalid': f['name'].invalid && (f['name'].dirty || f['name'].touched) && f['name'].errors }">
+              </div>
+              <div *ngIf="f['name'].invalid && (f['name'].dirty || f['name'].touched) &&  f['name'].errors"
+                        class="invalid-feedback">
+                        <div *ngIf="f['name'].errors['required']">Please enter name.
+                        </div>
+                    </div>
+              </div>
+            <div class="form-group">
+              <label for="schoolId">SchoolId</label>
+              <input id="schoolId" type="text" class="form-control" formControlName="schoolId" name="schoolId">
+            </div>
+            <div class="form-group">
+              <label for="grade">Grade</label>
+              <input id="grade" type="text" class="form-control" formControlName="grade" name="grade">
+            </div>
+          </div>
+          <div class="panel-footer">
+            <button class="btn btn-primary" type="submit" [disabled]="this.form.invalid">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
