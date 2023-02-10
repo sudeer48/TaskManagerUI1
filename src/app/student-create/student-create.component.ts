@@ -1,7 +1,7 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { first } from 'rxjs';
-import { StdService } from 'src/app/StudentService';
+import { StdService } from 'src/app/Services/StudentService';
 import Swal from 'sweetalert2';
 import { Student } from '../Models/Student';
 
@@ -12,36 +12,30 @@ import { Student } from '../Models/Student';
   styles: [
   ]
 })
-export class StudentCreateComponent implements OnInit, AfterViewInit {
+export class StudentCreateComponent implements OnInit {
+
   form: FormGroup;
   studentId: any;
   studentId1: any;
+  studentId2: any;
+  Component2Data: any = '';
   //studentservice: any;
-  constructor(private formBuilder: FormBuilder,
-    private studentservice: StdService
-  ) {
-
+  constructor(private formBuilder: FormBuilder, private studentservice: StdService) {
+    // studentservice.SharingData.subscribe((res: any) => {  
+    //   this.Component2Data = res;
+    // })
 
   }
-  ngAfterViewInit(): void {
-    throw new Error('Method not implemented.');
-  }
+
   get f() { return this.form.controls; }
   ngOnInit() {
-
-
     this.form = this.formBuilder.group({
       id: [],
       name: ['', [Validators.required]],
       schoolId: [''],
       grade: ['']
-      //     firstName: ['', Validators.required],
-      //     lastName: ['', Validators.required],
-      //     email: ['', [Validators.required, Validators.email]],
-      //     role: ['', Validators.required],
-      //     password: ['', [Validators.minLength(6), this.isAddMode ? Validators.required : Validators.nullValidator]],
-      //     confirmPassword: ['', this.isAddMode ? Validators.required : Validators.nullValidator]
     });
+
 
     // this.studentId= this.studentservice.getUpdate().subscribe((data: any) => {
     //   console.log(data+1);
@@ -50,22 +44,29 @@ export class StudentCreateComponent implements OnInit, AfterViewInit {
     // })
 
     this.studentservice.getAll().subscribe((data: any) => {
-      console.log(data[data.length - 1].id);
-      this.studentId1 = data[data.length - 1].id;
-      this.form.controls['id'].patchValue(++this.studentId1);
+      this.studentId2 = data[data.length - 1].id;
+      this.form.controls['id'].patchValue(++this.studentId2);
+      //this.studentservice.changeDataSubject(data);
+      //this.studentId2 = data;
+
+      //console.log(this.studentservice.changeDataSubject(data));
     })
 
 
 
   }
   RegisterStudent() {
-
     let leaveRequest = this.form.value;
     this.studentservice.insertData(leaveRequest)
       .subscribe((item: any) => {
         debugger;
         if (item) {
           if (item.response) {
+            this.form.reset();
+            this.studentservice.getAll().subscribe((data: any) => {
+              debugger;
+              this.studentId1 = data;
+            })
             Swal.fire({
               title: 'Record has been Inserted.',
               text: 'Record has been Inserted.',

@@ -1,6 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { Student } from '../Models/Student';
-import { StdService } from 'src/app/StudentService';
+import { StdService } from 'src/app/Services/StudentService';
 import Swal from 'sweetalert2';
 import { Subject } from 'rxjs';
 
@@ -10,14 +10,23 @@ import { Subject } from 'rxjs';
   styleUrls: ['./details.component.scss']
 })
 export class DetailsComponent implements OnInit {
-
+  @Input() data1:any;
   public students1?: Student[];
   studentId: any;
+  Component1Data: any = '';
   //StudentService: any;
-  constructor(public studentservice: StdService) { }
+  constructor(public studentservice: StdService) { 
+    // studentservice.SharingData.subscribe((res: any) => {
+    //   this.Component1Data = res;
+    // })
+  }
 
   ngOnInit(): void {
+    debugger;
+    
     this.retrieveStudents();
+    this.students1 = this.data1;
+    //this.studentservice.changeDataSubject(this.retrieveStudents());
   }
 
   retrieveStudents(): void {
@@ -25,8 +34,7 @@ export class DetailsComponent implements OnInit {
       .subscribe({
         next: (data) => {
           this.students1 = data;
-          this.studentId = 4;
-          this.studentservice.sendUpdate(5);
+          //this.studentservice.sendUpdate(5);
 
         },
         error: (e) => console.error(e)
