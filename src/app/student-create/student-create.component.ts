@@ -15,16 +15,13 @@ import { Student } from '../Models/Student';
 export class StudentCreateComponent implements OnInit {
 
   form: FormGroup;
-  studentId: any;
-  studentId1: any;
   studentId2: any;
   Component2Data: any = '';
-  //studentservice: any;
+  studentData: any;
   constructor(private formBuilder: FormBuilder, private studentservice: StdService) {
     // studentservice.SharingData.subscribe((res: any) => {  
     //   this.Component2Data = res;
     // })
-
   }
 
   get f() { return this.form.controls; }
@@ -32,28 +29,13 @@ export class StudentCreateComponent implements OnInit {
     this.form = this.formBuilder.group({
       id: [],
       name: ['', [Validators.required]],
-      schoolId: [''],
+      schoolId: ['',[Validators.required, Validators.pattern('^[0-9]+$')]],
       grade: ['']
     });
-
-
-    // this.studentId= this.studentservice.getUpdate().subscribe((data: any) => {
-    //   console.log(data+1);
-    //  this.studentId1=data;
-    //  alert(this.studentId1);
-    // })
-
     this.studentservice.getAll().subscribe((data: any) => {
       this.studentId2 = data[data.length - 1].id;
       this.form.controls['id'].patchValue(++this.studentId2);
-      //this.studentservice.changeDataSubject(data);
-      //this.studentId2 = data;
-
-      //console.log(this.studentservice.changeDataSubject(data));
     })
-
-
-
   }
   RegisterStudent() {
     let leaveRequest = this.form.value;
@@ -65,7 +47,9 @@ export class StudentCreateComponent implements OnInit {
             this.form.reset();
             this.studentservice.getAll().subscribe((data: any) => {
               debugger;
-              this.studentId1 = data;
+              this.studentData = data;
+              this.studentId2 = data[data.length - 1].id;
+              this.form.controls['id'].patchValue(++this.studentId2);
             })
             Swal.fire({
               title: 'Record has been Inserted.',
@@ -95,7 +79,6 @@ export class StudentCreateComponent implements OnInit {
           });
         }
       });
-    //.add(() => this.loading = false);
   }
 
 }
