@@ -8,7 +8,8 @@ import { DetailsComponent } from './details/details.component';
 import {HttpClientModule} from '@angular/common/http';
 import { StudentCreateComponent } from './student-create/student-create.component';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
-import { PopUpComponent } from './pop-up/pop-up.component'
+import { PopUpComponent } from './pop-up/pop-up.component';
+import { LoginComponent } from './login/login.component'
 //import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 @NgModule({
@@ -17,7 +18,8 @@ import { PopUpComponent } from './pop-up/pop-up.component'
     HomeComponent,
     DetailsComponent,
     StudentCreateComponent,
-    PopUpComponent
+    PopUpComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

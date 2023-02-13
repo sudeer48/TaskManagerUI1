@@ -10,7 +10,7 @@ import { Subject } from 'rxjs';
   styleUrls: ['./details.component.scss']
 })
 export class DetailsComponent implements OnInit {
-  @Input() data1:any;
+  @Input() data1:Student[];
   public students1?: Student[];
   studentId: any;
   Component1Data: any = '';
@@ -22,10 +22,7 @@ export class DetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    debugger;
-    
     this.retrieveStudents();
-    this.students1 = this.data1;
     //this.studentservice.changeDataSubject(this.retrieveStudents());
   }
 
@@ -33,7 +30,7 @@ export class DetailsComponent implements OnInit {
     this.studentservice.getAll()
       .subscribe({
         next: (data) => {
-          this.students1 = data;
+          this.data1 = data;
           //this.studentservice.sendUpdate(5);
 
         },
