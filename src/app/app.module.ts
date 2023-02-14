@@ -18,7 +18,6 @@ import { LoginComponent } from './login/login.component'
     HomeComponent,
     DetailsComponent,
     StudentCreateComponent,
-    PopUpComponent,
     LoginComponent
   ],
   imports: [
