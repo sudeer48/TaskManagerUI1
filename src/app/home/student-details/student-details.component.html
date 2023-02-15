@@ -1,6 +1,6 @@
 <a class="link-info" [routerLink]="'../studentregistration'">Create Student Info</a>
 
-<table class="table table-bordered">
+<!-- <table class="table table-bordered">
     <thead>
         <tr>
             <th scope="col">ID</th>
@@ -21,4 +21,36 @@
             </td>
         </tr>
     </tbody>
-</table>
+</table> -->
+
+
+
+
+<p-table [value]="data1" styleClass="p-datatable-gridlines" [tableStyle]="{'min-width': '50rem'}">
+    <ng-template pTemplate="caption">
+        Header
+    </ng-template>
+    <ng-template pTemplate="header">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">SchoolId</th>
+            <th scope="col">Grade</th>
+            <th scope="col">Delete</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body">
+        <tr *ngFor="let val of data1">
+            <td>{{val.id}}</td>
+            <td>{{val.name}}</td>
+            <td>{{val.schoolId}}</td>
+            <td>{{val.grade}}</td>
+            <td>
+                <a class="link-info" (click)="DeleteStudent(val.id)">Delete</a>
+            </td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+        Footer
+    </ng-template>
+</p-table>

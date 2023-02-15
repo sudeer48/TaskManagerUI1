@@ -10,20 +10,17 @@ import Swal from 'sweetalert2';
 })
 export class StudentDetailsComponent implements OnInit {
 
+  message :any;
   @Input() data1:Student[];
   public students1?: Student[];
   studentId: any;
   Component1Data: any = '';
-  //StudentService: any;
   constructor(public studentservice: StdService) { 
-    // studentservice.SharingData.subscribe((res: any) => {
-    //   this.Component1Data = res;
-    // })
   }
 
   ngOnInit(): void {
     this.retrieveStudents();
-    //this.studentservice.changeDataSubject(this.retrieveStudents());
+    //this.message="Hi";
   }
 
   retrieveStudents(): void {
@@ -31,8 +28,6 @@ export class StudentDetailsComponent implements OnInit {
       .subscribe({
         next: (data) => {
           this.data1 = data;
-          //this.studentservice.sendUpdate(5);
-
         },
         error: (e) => console.error(e)
       });
@@ -43,14 +38,11 @@ export class StudentDetailsComponent implements OnInit {
   DeleteStudent(Empid: number) {
     let cancelLeave = new Student();
     cancelLeave.id = Empid;
-    //cancelLeave.ManagerId = this.employeeProfile.EmployeeSlno;
-
     this.studentservice.deleteData(cancelLeave)
       .subscribe((item: any) => {
         debugger;
         if (item) {
           this.retrieveStudents();
-          //this.studentservice.sendUpdate(true);
           if (item.response) {
             Swal.fire({
               title: 'Record has been Removed.',

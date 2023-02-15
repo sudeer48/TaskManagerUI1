@@ -3,10 +3,15 @@ import { CommonModule } from '@angular/common';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MainComponent } from './main/main.component';
+import { MainComponent } from './popup/popup.component';
 import { StudentDetailsComponent } from './student-details/student-details.component';
 import { StudentregistrationComponent } from './studentregistration/studentregistration.component';
-
+import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+import { BrowserModule } from '@angular/platform-browser';
+import {ButtonModule} from 'primeng/button';
+import { DialogModule } from 'primeng/dialog';
+import {TableModule } from 'primeng/table'; 
 
 @NgModule({
   declarations: [
@@ -22,7 +27,11 @@ import { StudentregistrationComponent } from './studentregistration/studentregis
     //AppRoutingModule,
     //HttpClientModule,
     ReactiveFormsModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    PdfViewerModule,
+    ButtonModule,
+    DialogModule,
+    TableModule,
   ]
 })
 export class HomeModule { }

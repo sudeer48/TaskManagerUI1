@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { StdService } from 'src/app/Services/StudentService';
 import Swal from 'sweetalert2';
+import { StudentDetailsComponent } from '../student-details/student-details.component';
 
 @Component({
   selector: 'app-studentregistration',
@@ -12,12 +13,10 @@ export class StudentregistrationComponent implements OnInit {
 
   form: FormGroup;
   studentId2: any;
-  Component2Data: any = '';
   studentData: any;
+  @ViewChild(StudentDetailsComponent) child:any;
+  message:string;
   constructor(private formBuilder: FormBuilder, private studentservice: StdService) {
-    // studentservice.SharingData.subscribe((res: any) => {  
-    //   this.Component2Data = res;
-    // })
   }
 
   get f() { return this.form.controls; }
@@ -33,6 +32,12 @@ export class StudentregistrationComponent implements OnInit {
       this.form.controls['id'].patchValue(++this.studentId2);
     })
   }
+
+  ngAfterViewInit() {
+    this.message = this.child.message
+    //alert(this.message);
+  }
+
   RegisterStudent() {
     let leaveRequest = this.form.value;
     this.studentservice.insertData(leaveRequest)

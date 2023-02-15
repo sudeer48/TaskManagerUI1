@@ -33,12 +33,10 @@ export class StdService {
     return this.isLeaveApply.asObservable(); //it returns as an observable to which the receiver funtion will subscribe
   }
   insertData(students: Student): Observable<any> {
-    debugger;
     return this.http.post<Student>(baseUrl + postData, students)
   }
 
   deleteData(studentid: Student): Observable<any> {
-    debugger;
     return this.http.post(baseUrl + deleteData, studentid)
   }
 }
