@@ -1,18 +1,14 @@
-import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
-import { first } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { StdService } from 'src/app/Services/StudentService';
 import Swal from 'sweetalert2';
-//import { Student } from '../../Models/Student';
-
 
 @Component({
-  selector: 'app-student-create',
-  templateUrl: './student-create.component.html',
-  styles: [
-  ]
+  selector: 'app-studentregistration',
+  templateUrl: './studentregistration.component.html',
+  styleUrls: ['./studentregistration.component.scss']
 })
-export class StudentCreateComponent implements OnInit {
+export class StudentregistrationComponent implements OnInit {
 
   form: FormGroup;
   studentId2: any;
@@ -82,5 +78,3 @@ export class StudentCreateComponent implements OnInit {
   }
 
 }
-
-

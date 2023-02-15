@@ -1,15 +1,15 @@
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { Student } from '../Models/Student';
+import { Component, Input, OnInit } from '@angular/core';
+import { Student } from 'src/app/Models/Student';
 import { StdService } from 'src/app/Services/StudentService';
 import Swal from 'sweetalert2';
-import { Subject } from 'rxjs';
 
 @Component({
-  selector: 'app-details',
-  templateUrl: './details.component.html',
-  styleUrls: ['./details.component.scss']
+  selector: 'app-student-details',
+  templateUrl: './student-details.component.html',
+  styleUrls: ['./student-details.component.scss']
 })
-export class DetailsComponent implements OnInit {
+export class StudentDetailsComponent implements OnInit {
+
   @Input() data1:Student[];
   public students1?: Student[];
   studentId: any;
@@ -82,4 +82,5 @@ export class DetailsComponent implements OnInit {
       });
     //.add(() => this.loading = false);
   }
+
 }

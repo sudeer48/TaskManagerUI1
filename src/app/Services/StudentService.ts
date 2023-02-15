@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { Student } from '../Models/Student';
-//const baseUrl = 'https://localhost:44368/api';
-const baseUrl = 'https://localhost:7000';  //
+const baseUrl = 'https://localhost:44368/api';
+//const baseUrl = 'https://localhost:7000';  //
 
 const getData = '/GetEmployeeDetails';
 const postData = '/CreateEmployee';
