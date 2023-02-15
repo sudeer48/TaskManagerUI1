@@ -4,26 +4,27 @@ import { CommonModule } from '@angular/common';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { DetailsComponent } from '../details/details.component';
-import { StudentCreateComponent } from '../student-create/student-create.component';
 import { PopUpComponent } from '../pop-up/pop-up.component';
 import { LoginComponent } from '../login/login.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from '../app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MainComponent } from './main/main.component';
 
 
 @NgModule({
-  declarations: [HomeComponent,
-    DetailsComponent,
-    StudentCreateComponent,
-    PopUpComponent,
-    LoginComponent],
+  declarations: [
+    MainComponent,
+    HomeComponent
+  ],
   imports: [
-    BrowserModule,
-    AppRoutingModule,
+    //BrowserModule,
+    CommonModule,
+    //AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HomeRoutingModule
   ]
 })
 export class HomeModule { }

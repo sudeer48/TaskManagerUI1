@@ -9,8 +9,10 @@ import { StudentCreateComponent } from './student-create/student-create.componen
 const routes: Routes = [
   {path:'',component:LoginComponent},
   {path:'home',component:HomeComponent},
+  //{ path: 'home', loadChildren: () => import(`./home/home.module`).then(m => m.HomeModule) },
   {path:'details',component:DetailsComponent},
-  {path:'createstudent',component:StudentCreateComponent}
+  {path:'createstudent',component:StudentCreateComponent},
+  { path: 'leaves', loadChildren: () => import(`./leaves/leaves.module`).then(m => m.LeavesModule) },
 ];
 
 @NgModule({

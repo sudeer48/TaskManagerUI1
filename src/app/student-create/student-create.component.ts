@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { first } from 'rxjs';
 import { StdService } from 'src/app/Services/StudentService';
 import Swal from 'sweetalert2';
-import { Student } from '../Models/Student';
+//import { Student } from '../../Models/Student';
 
 
 @Component({
