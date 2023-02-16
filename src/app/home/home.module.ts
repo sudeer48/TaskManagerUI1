@@ -32,6 +32,7 @@ import {TableModule } from 'primeng/table';
     ButtonModule,
     DialogModule,
     TableModule,
-  ]
+  ],
+  providers: [StudentregistrationComponent],
 })
 export class HomeModule { }

@@ -1,30 +1,5 @@
 <a class="link-info" [routerLink]="'../studentregistration'">Create Student Info</a>
 
-<!-- <table class="table table-bordered">
-    <thead>
-        <tr>
-            <th scope="col">ID</th>
-            <th scope="col">Name</th>
-            <th scope="col">SchoolId</th>
-            <th scope="col">Grade</th>
-            <th scope="col">Delete</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr *ngFor="let val of data1">
-            <td>{{val.id}}</td>
-            <td>{{val.name}}</td>
-            <td>{{val.schoolId}}</td>
-            <td>{{val.grade}}</td>
-            <td>
-                <a class="link-info" (click)="DeleteStudent(val.id)">Delete</a>
-            </td>
-        </tr>
-    </tbody>
-</table> -->
-
-
-
 
 <p-table [value]="data1" [scrollable]="true" scrollHeight="300px"
 currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[3,3,50]">

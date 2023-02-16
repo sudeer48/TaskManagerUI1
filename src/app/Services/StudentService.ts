@@ -2,12 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { Student } from '../Models/Student';
+import { LoginModel } from '../Models/LoginModel';
 const baseUrl = 'https://localhost:44368/api';
 //const baseUrl = 'https://localhost:7000';  //
 
 const getData = '/GetEmployeeDetails';
 const postData = '/CreateEmployee';
 const deleteData = '/DeleteRecord';
+const loginUser = '/Authentication';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -22,6 +25,11 @@ export class StdService {
     debugger;
     return this.http.get<Student[]>(baseUrl + getData);
 
+  }
+
+  login(login: LoginModel):Observable<any>{
+    debugger;
+    return this.http.post<LoginModel>(baseUrl + loginUser,login);
   }
   // changeDataSubject(data: any) {
   //   this.SharingData.next(data.value);

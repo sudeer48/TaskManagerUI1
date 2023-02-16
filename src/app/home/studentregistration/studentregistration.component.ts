@@ -32,7 +32,9 @@ export class StudentregistrationComponent implements OnInit {
       id: [],
       name: ['', [Validators.required]],
       schoolId: ['',[Validators.required, Validators.pattern('^[0-9]+$')]],
-      grade: ['']
+      grade: [''],
+      username:[''],
+      password:['']
     });
     this.autoChangeVal();
   }

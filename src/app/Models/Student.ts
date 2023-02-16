@@ -4,6 +4,6 @@ export class Student{
      name: string;
      schoolId: string;
      grade: string;
-  
-    
+     username:string;
+     password:string;   
 }
