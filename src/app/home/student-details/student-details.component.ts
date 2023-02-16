@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Student } from 'src/app/Models/Student';
 import { StdService } from 'src/app/Services/StudentService';
 import Swal from 'sweetalert2';
+import { StudentregistrationComponent } from '../studentregistration/studentregistration.component';
 
 @Component({
   selector: 'app-student-details',
@@ -15,7 +16,7 @@ export class StudentDetailsComponent implements OnInit {
   public students1?: Student[];
   studentId: any;
   Component1Data: any = '';
-  constructor(public studentservice: StdService) { 
+  constructor(public studentservice: StdService,public studentregistration:StudentregistrationComponent) { 
   }
 
   ngOnInit(): void {
@@ -42,6 +43,7 @@ export class StudentDetailsComponent implements OnInit {
       .subscribe((item: any) => {
         debugger;
         if (item) {
+          this.studentregistration.autoChangeVal();
           this.retrieveStudents();
           if (item.response) {
             Swal.fire({

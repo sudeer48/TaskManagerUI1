@@ -19,6 +19,13 @@ export class StudentregistrationComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private studentservice: StdService) {
   }
 
+  autoChangeVal()
+  {
+    this.studentservice.getAll().subscribe((data: any) => {
+      this.studentId2 = data[data.length - 1].id;
+      this.form.controls['id'].patchValue(++this.studentId2);
+    })
+  }
   get f() { return this.form.controls; }
   ngOnInit() {
     this.form = this.formBuilder.group({

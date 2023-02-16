@@ -26,10 +26,11 @@
 
 
 
-<p-table [value]="data1" styleClass="p-datatable-gridlines" [tableStyle]="{'min-width': '50rem'}">
-    <ng-template pTemplate="caption">
+<p-table [value]="data1" [scrollable]="true" scrollHeight="300px"
+currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[3,3,50]">
+    <!-- <ng-template pTemplate="caption">
         Header
-    </ng-template>
+    </ng-template> -->
     <ng-template pTemplate="header">
         <tr>
             <th scope="col">ID</th>
@@ -39,8 +40,8 @@
             <th scope="col">Delete</th>
         </tr>
     </ng-template>
-    <ng-template pTemplate="body">
-        <tr *ngFor="let val of data1">
+    <ng-template pTemplate="body" let-val>
+        <tr>
             <td>{{val.id}}</td>
             <td>{{val.name}}</td>
             <td>{{val.schoolId}}</td>
@@ -50,7 +51,10 @@
             </td>
         </tr>
     </ng-template>
-    <ng-template pTemplate="summary">
-        Footer
+    <ng-template pTemplate="paginatorleft">
+        <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+    </ng-template>
+    <ng-template pTemplate="paginatorright">
+        <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
     </ng-template>
 </p-table>
