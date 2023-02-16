@@ -34,10 +34,7 @@ export class StudentregistrationComponent implements OnInit {
       schoolId: ['',[Validators.required, Validators.pattern('^[0-9]+$')]],
       grade: ['']
     });
-    this.studentservice.getAll().subscribe((data: any) => {
-      this.studentId2 = data[data.length - 1].id;
-      this.form.controls['id'].patchValue(++this.studentId2);
-    })
+    this.autoChangeVal();
   }
 
   ngAfterViewInit() {
