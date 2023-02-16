@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { StdService } from '../Services/StudentService';
@@ -19,9 +19,11 @@ export class LoginComponent implements OnInit {
   get f() { return this.form.controls; }
   ngOnInit(): void {
     this.form = this.formBuilder.group({
-      username: [],
-      password: []     
+      username: ['', [Validators.required]],
+      password: ['', [Validators.required]]     
     });
+
+    localStorage.setItem('SeesionUser',this.form.value.username)
   }
   Authenticate()
   {

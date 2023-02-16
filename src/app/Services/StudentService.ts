@@ -4,7 +4,7 @@ import { Observable, Subject } from 'rxjs';
 import { Student } from '../Models/Student';
 import { LoginModel } from '../Models/LoginModel';
 const baseUrl = 'https://localhost:44368/api';
-//const baseUrl = 'https://localhost:7000';  //
+//const baseUrl = 'https://localhost:44368/SQL_UserManagementController1cs/api';  //
 
 const getData = '/GetEmployeeDetails';
 const postData = '/CreateEmployee';

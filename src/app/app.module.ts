@@ -10,6 +10,9 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { InputTextModule } from "primeng/inputtext";
+import {MessageModule} from 'primeng/message';
+import {PanelModule} from 'primeng/panel';
+import { AuthguardServiceService } from './Services/authguard-service.service';
 
 @NgModule({
   declarations: [
@@ -24,9 +27,10 @@ import { InputTextModule } from "primeng/inputtext";
     CommonModule,
    InputTextModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    MessageModule
   ],
-  providers: [],
+  providers: [AuthguardServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

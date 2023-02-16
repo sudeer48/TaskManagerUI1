@@ -2,7 +2,7 @@
     <!-- <form [formGroup]="form" (ngSubmit)="Authenticate()"> -->
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
-            
+
             <div class="col col-xl-10">
                 <div class="card" style="border-radius: 1rem;">
                     <div class="row g-0">
@@ -22,25 +22,39 @@
 
                                     <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Sign into your account
                                     </h5>
-                                    
+
                                     <div class="form-outline mb-4">
                                         <span class="p-float-label">
-                                            <input type="text" id="inputtext" class="form-control form-control-lg" formControlName="username"
-                                                pInputText [(ngModel)]="value1">
+                                            <input type="text" id="inputtext" class="form-control form-control-lg"
+                                                formControlName="username" pInputText [(ngModel)]="value1"
+                                                [ngClass]="{ 'is-invalid': f['username'].invalid && (f['username'].dirty || f['username'].touched) && f['username'].errors }">
                                             <label for="inputtext">User Name</label>
                                         </span>
+                                        <div *ngIf="f['username'].invalid && (f['username'].dirty || f['username'].touched) &&  f['username'].errors"
+                                            class="is-invalid text-danger">
+                                            <div *ngIf="f['username'].errors['required']">Username can't be emtpy
+                                            </div>
+                                        </div>
                                     </div>
 
                                     <div class="form-outline mb-4">
                                         <span class="p-float-label">
-                                            <input type="text" type="password" id="inputtext" class="form-control form-control-lg" formControlName="password"
-                                                pInputText [(ngModel)]="value2">
+                                            <input type="text" type="password" id="inputtext"
+                                                class="form-control form-control-lg" formControlName="password"
+                                                pInputText [(ngModel)]="value2"
+                                                [ngClass]="{ 'is-invalid': f['password'].invalid && (f['password'].dirty || f['password'].touched) && f['password'].errors }">
                                             <label for="inputtext">Password</label>
                                         </span>
+                                        <div *ngIf="f['password'].invalid && (f['password'].dirty || f['password'].touched) &&  f['password'].errors"
+                                            class="is-invalid text-danger">
+                                            <div *ngIf="f['password'].errors['required']">Password can't be emtpy
+                                            </div>
+                                        </div>
                                     </div>
 
                                     <div class="pt-1 mb-4">
-                                        <button class="btn btn-dark btn-lg btn-block" type="button" (click)="Authenticate()">Login</button>
+                                        <button class="btn btn-dark btn-lg btn-block" type="button"
+                                            (click)="Authenticate()">Login</button>
                                     </div>
 
                                     <a class="small text-muted" href="#!">Forgot password?</a>
@@ -54,8 +68,8 @@
                     </div>
                 </div>
             </div>
-           
+
         </div>
     </div>
-<!-- </form> -->
+    <!-- </form> -->
 </section>
