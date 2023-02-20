@@ -1,65 +1,57 @@
-<div class="container">
+<form [formGroup]="form" (ngSubmit)="RegisterStudent()">
+  <div class="container">
     <div class="row">
-      <div class="form-bg">
-        <form [formGroup]="form" (ngSubmit)="RegisterStudent()">
-          <div class="panel panel-primary">
-            <div class="panel-heading">
-              <h3 class="panel-title">Registration</h3>
-            </div>
-            <div class="panel-body">
-  
-              <div class="form-group">
-                <label for="id">ID</label>
-                <input id="id" type="text" class="form-control" readonly formControlName="id" name="id">
-              </div>
-              <div class="form-group">
-                <div>
-                  <label for="name">Name <span class="text-danger">*</span></label>
-                  <input id="name" type="text" class="form-control" formControlName="name" name="name"
-                    [ngClass]="{ 'is-invalid': f['name'].invalid && (f['name'].dirty || f['name'].touched) && f['name'].errors }">
-                </div>
-                <div *ngIf="f['name'].invalid && (f['name'].dirty || f['name'].touched) &&  f['name'].errors"
-                  class="is-invalid text-danger">
-                  <div *ngIf="f['name'].errors['required']">Name can't be emtpy
-                  </div>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="schoolId">SchoolId <span class="text-danger">*</span></label>
-                <input id="schoolId" type="text" class="form-control" formControlName="schoolId" name="schoolId"
-                  [ngClass]="{ 'is-invalid': f['schoolId'].invalid && (f['schoolId'].dirty || f['schoolId'].touched) && f['schoolId'].errors }">
-                <div class="text-danger"
-                  *ngIf="f['schoolId']?.invalid && (f['schoolId']?.touched || f['schoolId']?.dirty)">
-                  <div *ngIf="f['schoolId']?.errors?.['required']">
-                    School Id can't be emtpy
-                  </div>
-                  <div *ngIf="f['schoolId']?.errors?.['pattern']">
-                    School Id can't allow characters
-                  </div>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="grade">Grade <span class="text-danger">*</span></label>
-                <input id="grade" type="text" class="form-control" formControlName="grade" name="grade">
-              </div>
-              <div class="form-group">
-                <label for="username">UserName <span class="text-danger">*</span></label>
-                <input id="username" type="text" class="form-control" formControlName="username" name="username">
-              </div>
-              <div class="form-group">
-                <label for="password">Password <span class="text-danger">*</span></label>
-                <input id="password" type="text" class="form-control" formControlName="password" name="password">
-              </div>
-            </div>
-            <div class="panel-footer">
-              <button class="btn btn-primary" type="submit" [disabled]="this.form.invalid">Submit</button>
-            </div>
+      <div class="panel-heading">
+        <h3 class="panel-title">Registration</h3>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="id">StudentId</label>
+        <input id="id" type="text" class="form-control" readonly formControlName="id" name="id">
+      </div>
+      <div class="form-group col-md-6">
+        <div>
+          <label for="name">Name <span class="text-danger">*</span></label>
+          <input id="name" type="text" class="form-control" formControlName="name" name="name"
+            [ngClass]="{ 'is-invalid': f['name'].invalid && (f['name'].dirty || f['name'].touched) && f['name'].errors }">
+        </div>
+        <div *ngIf="f['name'].invalid && (f['name'].dirty || f['name'].touched) &&  f['name'].errors"
+          class="is-invalid text-danger">
+          <div *ngIf="f['name'].errors['required']">Name can't be emtpy
           </div>
-        </form>
+        </div>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="schoolId">SchoolId <span class="text-danger">*</span></label>
+        <input id="schoolId" type="text" class="form-control" formControlName="schoolId" name="schoolId"
+          [ngClass]="{ 'is-invalid': f['schoolId'].invalid && (f['schoolId'].dirty || f['schoolId'].touched) && f['schoolId'].errors }">
+        <div class="text-danger" *ngIf="f['schoolId']?.invalid && (f['schoolId']?.touched || f['schoolId']?.dirty)">
+          <div *ngIf="f['schoolId']?.errors?.['required']">
+            School Id can't be emtpy
+          </div>
+          <div *ngIf="f['schoolId']?.errors?.['pattern']">
+            School Id can't allow characters
+          </div>
+        </div>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="grade">Grade</label>
+        <input id="grade" type="text" class="form-control" formControlName="grade" name="grade">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="username">UserName <span class="text-danger">*</span></label>
+        <input id="username" type="text" class="form-control" formControlName="username" name="username">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="password">Password <span class="text-danger">*</span></label>
+        <input id="password" type="text" class="form-control" formControlName="password" name="password">
+      </div>
+      <div class="panel-footer">
+        <button class="btn btn-primary" type="submit" [disabled]="this.form.invalid">Submit</button>
       </div>
     </div>
   </div>
-  
-  <div class="container">
-    <app-student-details [data1]="studentData"></app-student-details>
-  </div>
+</form>
+
+<div class="container">
+  <app-student-details [data1]="studentData"></app-student-details>
+</div>

@@ -26,7 +26,7 @@
                                     <div class="form-outline mb-4">
                                         <span class="p-float-label">
                                             <input type="text" id="inputtext" class="form-control form-control-lg"
-                                                formControlName="username" pInputText [(ngModel)]="value1"
+                                                formControlName="username" pInputText 
                                                 [ngClass]="{ 'is-invalid': f['username'].invalid && (f['username'].dirty || f['username'].touched) && f['username'].errors }">
                                             <label for="inputtext">User Name</label>
                                         </span>
@@ -39,11 +39,11 @@
 
                                     <div class="form-outline mb-4">
                                         <span class="p-float-label">
-                                            <input type="text" type="password" id="inputtext"
+                                            <input type="text" type="password" id="inputtext1"
                                                 class="form-control form-control-lg" formControlName="password"
-                                                pInputText [(ngModel)]="value2"
+                                                pInputText 
                                                 [ngClass]="{ 'is-invalid': f['password'].invalid && (f['password'].dirty || f['password'].touched) && f['password'].errors }">
-                                            <label for="inputtext">Password</label>
+                                            <label for="inputtext1">Password</label>
                                         </span>
                                         <div *ngIf="f['password'].invalid && (f['password'].dirty || f['password'].touched) &&  f['password'].errors"
                                             class="is-invalid text-danger">

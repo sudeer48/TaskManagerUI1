@@ -14,10 +14,13 @@ constructor(private AuthguardService:AuthguardServiceService,private router: Rou
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      if (!this.AuthguardService.gettoken()) {  
-        this.router.navigateByUrl("/");  
+      debugger;
+      if (localStorage.getItem('currentUser')) {  
+        return true;  
     }  
-    return this.AuthguardService.gettoken();
+    this.router.navigate(['']);  
+    return false; 
+
   }
   
 }

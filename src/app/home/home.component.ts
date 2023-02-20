@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Route, Router } from '@angular/router';
+import { AuthguardServiceService } from '../Services/authguard-service.service';
 //import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -8,11 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   closeResult = '';
-  constructor() { }
+  constructor(private authguardServiceService: AuthguardServiceService, private router: Router) { }
 
   ngOnInit(): void {
     debugger;
   }
+
+  logout() {
+    debugger;
+    this.authguardServiceService.logout();
+    this.router.navigate(['']);
+  }
+
   // open(content: any) {
   //   this.modalService.open(content,
   //  {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {

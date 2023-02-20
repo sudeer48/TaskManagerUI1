@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { AuthguardServiceService } from '../Services/authguard-service.service';
 import { StdService } from '../Services/StudentService';
 
 @Component({
@@ -14,7 +15,14 @@ export class LoginComponent implements OnInit {
   value1: any;
   value2: any;
   //studentservice: any;
-  constructor(private formBuilder: FormBuilder, private studentservice: StdService,private router: Router) { }
+  constructor(private formBuilder: FormBuilder, private studentservice: StdService,private router: Router,
+    private _auth: AuthguardServiceService) {
+
+      if (this._auth.loggedIn) {  
+        this.router.navigate(['/home']);  
+      }  
+
+     }
 
   get f() { return this.form.controls; }
   ngOnInit(): void {
@@ -28,7 +36,9 @@ export class LoginComponent implements OnInit {
   Authenticate()
   {
     debugger;
+    
     let leaveRequest = this.form.value;
+    if (this._auth.login(leaveRequest.username, leaveRequest.password)) { 
     this.studentservice.login(leaveRequest)
       .subscribe((item: any) => {
         debugger;
@@ -56,5 +66,6 @@ export class LoginComponent implements OnInit {
           });
         }
       });
+    }
   }
 }
