@@ -12,6 +12,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import {ButtonModule} from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import {TableModule } from 'primeng/table'; 
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 
 @NgModule({
   declarations: [
@@ -32,6 +34,7 @@ import {TableModule } from 'primeng/table';
     ButtonModule,
     DialogModule,
     TableModule,
+    FontAwesomeModule
   ],
   providers: [StudentregistrationComponent],
 })

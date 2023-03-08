@@ -3,6 +3,10 @@ import { Student } from 'src/app/Models/Student';
 import { StdService } from 'src/app/Services/StudentService';
 import Swal from 'sweetalert2';
 import { StudentregistrationComponent } from '../studentregistration/studentregistration.component';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+
+
+
 
 @Component({
   selector: 'app-student-details',
@@ -11,6 +15,7 @@ import { StudentregistrationComponent } from '../studentregistration/studentregi
 })
 export class StudentDetailsComponent implements OnInit {
 
+  faTrash = faTrash;
   message :any;
   @Input() data1:Student[];
   public students1?: Student[];
