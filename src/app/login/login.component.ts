@@ -4,8 +4,8 @@ import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { AuthguardServiceService } from '../Services/authguard-service.service';
 import { StdService } from '../Services/StudentService';
-import { } from '../forgot-password/forgot-password.component'
 import { PrimeNGConfig } from 'primeng/api';
+import {ForgotPasswordComponent} from '../forgot-password/forgot-password.component'
 
 @Component({
   selector: 'app-login',
