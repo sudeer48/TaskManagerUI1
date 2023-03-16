@@ -12,6 +12,8 @@ import { InputTextModule } from "primeng/inputtext";
 import { MessageModule } from 'primeng/message';
 import { AuthguardServiceService } from './Services/authguard-service.service';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { DialogModule } from 'primeng/dialog';
+import { ButtonModule } from 'primeng/button';
 
 
 @NgModule({
@@ -29,6 +31,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     BrowserAnimationsModule,
     FormsModule,
     MessageModule,
+    DialogModule,
+    ButtonModule,
     FontAwesomeModule
   ],
   providers: [AuthguardServiceService],

@@ -13,6 +13,7 @@ import {ButtonModule} from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import {TableModule } from 'primeng/table'; 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ForgotPasswordComponent } from '../forgot-password/forgot-password.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     //DetailsComponent,
     HomeComponent,
     StudentDetailsComponent,
-    StudentregistrationComponent
+    StudentregistrationComponent,
+    ForgotPasswordComponent
   ],
   imports: [
     //BrowserModule,

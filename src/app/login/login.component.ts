@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { AuthguardServiceService } from '../Services/authguard-service.service';
 import { StdService } from '../Services/StudentService';
+import { } from '../forgot-password/forgot-password.component'
+import { PrimeNGConfig } from 'primeng/api';
 
 @Component({
   selector: 'app-login',
@@ -15,57 +17,64 @@ export class LoginComponent implements OnInit {
   value1: any;
   value2: any;
   //studentservice: any;
-  constructor(private formBuilder: FormBuilder, private studentservice: StdService,private router: Router,
-    private _auth: AuthguardServiceService) {
+  displayModal: boolean;
+  
+  constructor(private formBuilder: FormBuilder, private studentservice: StdService, private router: Router,
+    private _auth: AuthguardServiceService,private primengConfig: PrimeNGConfig) {
 
-      if (this._auth.loggedIn) {  
-        this.router.navigate(['/home']);  
-      }  
+    if (this._auth.loggedIn) {
+      this.router.navigate(['/home']);
+    }
 
-     }
+    this.primengConfig.ripple = true;
+
+  }
 
   get f() { return this.form.controls; }
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       username: ['', [Validators.required]],
-      password: ['', [Validators.required]]     
+      password: ['', [Validators.required]]
     });
 
-    localStorage.setItem('SeesionUser',this.form.value.username)
+    localStorage.setItem('SeesionUser', this.form.value.username)
   }
-  Authenticate()
-  {
+  Authenticate() {
     debugger;
-    
+
     let leaveRequest = this.form.value;
-    if (this._auth.login(leaveRequest.username, leaveRequest.password)) { 
-    this.studentservice.login(leaveRequest)
-      .subscribe((item: any) => {
-        debugger;
-        if (item) {
-          if (item.response) {
-            debugger;
-            this.router.navigate(['/home']);
+    if (this._auth.login(leaveRequest.username, leaveRequest.password)) {
+      this.studentservice.login(leaveRequest)
+        .subscribe((item: any) => {
+          debugger;
+          if (item) {
+            if (item.response) {
+              debugger;
+              this.router.navigate(['/home']);
+            }
+            else {
+              Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Invalid Login Credentials!',
+                footer: 'Please check your Login Credentials.'
+              });
+            }
           }
           else {
             Swal.fire({
+              title: 'Oops...! Something went Wrong !',
+              html: 'Your leaves are not applied.',
               icon: 'error',
-              title: 'Oops...',
-              text: 'Invalid Login Credentials!',
-              footer: 'Please check your Login Credentials.'
+              confirmButtonColor: 'rgb(54, 69, 116)',
+              confirmButtonText: 'Ok'
             });
           }
-        }
-        else {
-          Swal.fire({
-            title: 'Oops...! Something went Wrong !',
-            html: 'Your leaves are not applied.',
-            icon: 'error',
-            confirmButtonColor: 'rgb(54, 69, 116)',
-            confirmButtonText: 'Ok'
-          });
-        }
-      });
+        });
     }
+  }
+
+  showModalDialog() {
+    this.displayModal = true;
   }
 }
