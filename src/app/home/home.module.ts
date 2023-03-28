@@ -13,6 +13,8 @@ import {ButtonModule} from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import {TableModule } from 'primeng/table'; 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { JwtinterceptorInterceptor } from '../helpers/jwtinterceptor.interceptor';
 //import { ForgotPasswordComponent } from '../forgot-password/forgot-password.component';
 
 
@@ -38,6 +40,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     TableModule,
     FontAwesomeModule
   ],
-  providers: [StudentregistrationComponent],
+  providers: [StudentregistrationComponent,{provide:HTTP_INTERCEPTORS,useClass:JwtinterceptorInterceptor,multi:true}],
 })
 export class HomeModule { }

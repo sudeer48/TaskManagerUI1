@@ -3,8 +3,8 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { Student } from '../Models/Student';
 import { LoginModel } from '../Models/LoginModel';
-const baseUrl = 'https://localhost:44368/api';
-//const baseUrl = 'https://localhost:44368/SQL_UserManagement/api';  //
+//const baseUrl = 'https://localhost:44368/api';
+const baseUrl = 'https://localhost:44368/SQL_UserManagement/api';  //
 
 const getData = '/GetEmployeeDetails';
 const postData = '/CreateEmployee';
@@ -28,7 +28,6 @@ export class StdService {
   }
 
   login(login: LoginModel):Observable<any>{
-    debugger;
     return this.http.post<LoginModel>(baseUrl + loginUser,login);
   }
   // changeDataSubject(data: any) {

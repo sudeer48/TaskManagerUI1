@@ -37,19 +37,18 @@ export class LoginComponent implements OnInit {
       password: ['', [Validators.required]]
     });
 
-    localStorage.setItem('SeesionUser', this.form.value.username)
+    //localStorage.setItem('SeesionUser', this.form.value.username)
   }
   Authenticate() {
     debugger;
-
     let leaveRequest = this.form.value;
-    if (this._auth.login(leaveRequest.username, leaveRequest.password)) {
+    //if (this._auth.login(leaveRequest)) {
       this.studentservice.login(leaveRequest)
         .subscribe((item: any) => {
-          debugger;
           if (item) {
             if (item.response) {
               debugger;
+              localStorage.setItem('token',item.message)
               this.router.navigate(['/home']);
             }
             else {
@@ -71,7 +70,7 @@ export class LoginComponent implements OnInit {
             });
           }
         });
-    }
+   // }
   }
 
   showModalDialog() {
