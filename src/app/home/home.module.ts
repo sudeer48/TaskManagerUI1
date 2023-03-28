@@ -40,6 +40,6 @@ import { JwtinterceptorInterceptor } from '../helpers/jwtinterceptor.interceptor
     TableModule,
     FontAwesomeModule
   ],
-  providers: [StudentregistrationComponent,{provide:HTTP_INTERCEPTORS,useClass:JwtinterceptorInterceptor,multi:true}],
+  providers: [StudentregistrationComponent],
 })
 export class HomeModule { }

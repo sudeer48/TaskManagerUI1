@@ -39,7 +39,7 @@ import { JwtinterceptorInterceptor } from './helpers/jwtinterceptor.interceptor'
     ButtonModule,
     FontAwesomeModule
   ],
-  providers: [AuthguardServiceService],
+  providers: [AuthguardServiceService,{provide:HTTP_INTERCEPTORS,useClass:JwtinterceptorInterceptor,multi:true}],
   bootstrap: [AppComponent]
 })
 
