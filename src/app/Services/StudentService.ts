@@ -22,7 +22,6 @@ export class StdService {
   //SharingData = new Subject();//subject
 
   getAll(): Observable<Student[]> {
-    debugger;
     return this.http.get<Student[]>(baseUrl + getData);
 
   }

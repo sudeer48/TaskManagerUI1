@@ -16,6 +16,7 @@ import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { JwtinterceptorInterceptor } from './helpers/jwtinterceptor.interceptor';
+import { Password, PasswordModule } from 'primeng/password';
 
 
 
@@ -37,7 +38,8 @@ import { JwtinterceptorInterceptor } from './helpers/jwtinterceptor.interceptor'
     MessageModule,
     DialogModule,
     ButtonModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    PasswordModule
   ],
   providers: [AuthguardServiceService,{provide:HTTP_INTERCEPTORS,useClass:JwtinterceptorInterceptor,multi:true}],
   bootstrap: [AppComponent]

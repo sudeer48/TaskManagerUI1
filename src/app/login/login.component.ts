@@ -6,6 +6,7 @@ import { AuthguardServiceService } from '../Services/authguard-service.service';
 import { StdService } from '../Services/StudentService';
 import { PrimeNGConfig } from 'primeng/api';
 import {ForgotPasswordComponent} from '../forgot-password/forgot-password.component'
+import { PasswordModule } from 'primeng/password';
 
 @Component({
   selector: 'app-login',
@@ -42,7 +43,9 @@ export class LoginComponent implements OnInit {
   Authenticate() {
     debugger;
     let leaveRequest = this.form.value;
+    console.log(this._auth.login(leaveRequest));
     //if (this._auth.login(leaveRequest)) {
+      debugger;
       this.studentservice.login(leaveRequest)
         .subscribe((item: any) => {
           if (item) {
@@ -70,7 +73,7 @@ export class LoginComponent implements OnInit {
             });
           }
         });
-   // }
+    //}
   }
 
   showModalDialog() {

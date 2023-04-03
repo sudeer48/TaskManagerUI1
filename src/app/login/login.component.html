@@ -24,12 +24,13 @@
                                     </h5>
 
                                     <div class="form-outline mb-4">
-                                        <span class="p-float-label">
-                                            <input type="text" id="inputtext" class="form-control form-control-lg"
-                                                formControlName="username" pInputText
-                                                [ngClass]="{ 'is-invalid': f['username'].invalid && (f['username'].dirty || f['username'].touched) && f['username'].errors }">
-                                            <label for="inputtext">User Name</label>
-                                        </span>
+                                        <!-- <span class="p-float-label"> -->
+                                        <label for="inputtext">User Name</label>
+                                        <input type="text" id="inputtext" class="form-control form-control-lg"
+                                            formControlName="username" pInputText
+                                            [ngClass]="{ 'is-invalid': f['username'].invalid && (f['username'].dirty || f['username'].touched) && f['username'].errors }">
+
+                                        <!-- </span> -->
                                         <div *ngIf="f['username'].invalid && (f['username'].dirty || f['username'].touched) &&  f['username'].errors"
                                             class="is-invalid text-danger">
                                             <div *ngIf="f['username'].errors['required']">Username can't be emtpy
@@ -38,13 +39,16 @@
                                     </div>
 
                                     <div class="form-outline mb-4">
-                                        <span class="p-float-label">
-                                            <input type="text" type="password" id="inputtext1"
-                                                class="form-control form-control-lg" formControlName="password"
-                                                pInputText
-                                                [ngClass]="{ 'is-invalid': f['password'].invalid && (f['password'].dirty || f['password'].touched) && f['password'].errors }">
-                                            <label for="inputtext1">Password</label>
-                                        </span>
+                                        <!-- <span class="p-float-label"> -->
+
+
+                                        <!-- <p-password formControlName="value" [toggleMask]="true" [feedback]="false"></p-password> -->
+                                        <label for="inputtext1">Password</label>
+                                        <input type="text" type="password" id="inputtext1"
+                                            class="form-control form-control-lg" formControlName="password"
+                                            [ngClass]="{ 'is-invalid': f['password'].invalid && (f['password'].dirty || f['password'].touched) && f['password'].errors }">
+
+                                        <!-- </span> -->
                                         <div *ngIf="f['password'].invalid && (f['password'].dirty || f['password'].touched) &&  f['password'].errors"
                                             class="is-invalid text-danger">
                                             <div *ngIf="f['password'].errors['required']">Password can't be emtpy

@@ -7,14 +7,10 @@ import { MainComponent } from './popup/popup.component';
 import { StudentDetailsComponent } from './student-details/student-details.component';
 import { StudentregistrationComponent } from './studentregistration/studentregistration.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { BrowserModule } from '@angular/platform-browser';
 import {ButtonModule} from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import {TableModule } from 'primeng/table'; 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { JwtinterceptorInterceptor } from '../helpers/jwtinterceptor.interceptor';
 //import { ForgotPasswordComponent } from '../forgot-password/forgot-password.component';
 
 

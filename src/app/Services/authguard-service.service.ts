@@ -25,21 +25,23 @@ export class AuthguardServiceService {
     return localStorage.getItem('user');
   }
 
-  login(login: LoginModel): Observable<any> {
+  login(login: LoginModel): any {
     debugger;
-    //return this.studentservice.login(login)
-    return this.http.post<LoginModel>(baseUrl + loginUser, login)
-      .pipe(map(user => {
+    this.studentservice.login(login)
+      .subscribe((item: any) => {
+        if (item) {
+          debugger;
+          if (item.response) {
+            debugger;
+            localStorage.setItem('token', item.message);
+            
+          }
+          return item.response;
+        }
+        return item.response;;
+      });
 
-        debugger;
-        // store user details and jwt token in local storage to keep user logged in between page refreshes
-        localStorage.setItem('user', JSON.stringify(user));
-        this.userSubject.next(user);
-        return user;
-      }
 
-      ))
-      ;
   }
 
   // login(username: string, password: string): boolean {
@@ -51,7 +53,7 @@ export class AuthguardServiceService {
   //   return false;
   // }
   logout() {
-    localStorage.removeItem('user');
+    localStorage.removeItem('token');
   }
   public get loggedIn(): boolean {
     return (localStorage.getItem('user') !== null);
