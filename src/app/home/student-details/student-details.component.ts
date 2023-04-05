@@ -3,7 +3,8 @@ import { Student } from 'src/app/Models/Student';
 import { StdService } from 'src/app/Services/StudentService';
 import Swal from 'sweetalert2';
 import { StudentregistrationComponent } from '../studentregistration/studentregistration.component';
-import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faTrash,faEdit } from '@fortawesome/free-solid-svg-icons';
+
 
 
 
@@ -16,11 +17,13 @@ import { faTrash } from '@fortawesome/free-solid-svg-icons';
 export class StudentDetailsComponent implements OnInit {
 
   faTrash = faTrash;
+  faEdit = faEdit;
   message :any;
   @Input() data1:Student[];
   public students1?: Student[];
   studentId: any;
   Component1Data: any = '';
+  displayBasic2: boolean;
   constructor(public studentservice: StdService,public studentregistration:StudentregistrationComponent) { 
   }
 
@@ -39,7 +42,14 @@ export class StudentDetailsComponent implements OnInit {
       });
   }
 
+  EditStudent(EmpId:number)
+  {
+    this.displayBasic2 = true;
+  }
 
+//   showBasicDialog2() {
+//     this.displayBasic2 = true;
+// }
 
   DeleteStudent(Empid: number) {
     let cancelLeave = new Student();
