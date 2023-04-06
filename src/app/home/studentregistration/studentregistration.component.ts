@@ -14,13 +14,12 @@ export class StudentregistrationComponent implements OnInit {
   form: FormGroup;
   studentId2: any;
   studentData: any;
-  @ViewChild(StudentDetailsComponent) child:any;
-  message:string;
+  @ViewChild(StudentDetailsComponent) child: any;
+  message: string;
   constructor(private formBuilder: FormBuilder, private studentservice: StdService) {
   }
 
-  autoChangeVal()
-  {
+  autoChangeVal() {
     this.studentservice.getAll().subscribe((data: any) => {
       this.studentId2 = data[data.length - 1].id;
       this.form.controls['id'].patchValue(++this.studentId2);
@@ -31,10 +30,10 @@ export class StudentregistrationComponent implements OnInit {
     this.form = this.formBuilder.group({
       id: [],
       name: ['', [Validators.required]],
-      schoolId: ['',[Validators.required, Validators.pattern('^[0-9]+$')]],
+      schoolId: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
       grade: [''],
-      username:[''],
-      password:['']
+      username: [''],
+      password: ['']
     });
     this.autoChangeVal();
   }
@@ -51,20 +50,31 @@ export class StudentregistrationComponent implements OnInit {
         debugger;
         if (item) {
           if (item.response) {
-            this.form.reset();
-            this.studentservice.getAll().subscribe((data: any) => {
-              debugger;
-              this.studentData = data;
-              this.studentId2 = data[data.length - 1].id;
-              this.form.controls['id'].patchValue(++this.studentId2);
-            })
-            Swal.fire({
-              title: 'Record has been Inserted.',
-              text: 'Record has been Inserted.',
-              icon: 'success',
-              confirmButtonColor: 'rgb(54, 69, 116)',
-              confirmButtonText: 'Ok'
-            });
+            if (item.isSuccess) {
+              this.form.reset();
+              this.studentservice.getAll().subscribe((data: any) => {
+                debugger;
+                this.studentData = data;
+                this.studentId2 = data[data.length - 1].id;
+                this.form.controls['id'].patchValue(++this.studentId2);
+              })
+              Swal.fire({
+                title: item.message,
+                text: item.message,
+                icon: 'success',
+                confirmButtonColor: 'rgb(54, 69, 116)',
+                confirmButtonText: 'Ok'
+              });
+            }
+            else {
+              Swal.fire({
+                title: item.message,
+                text: item.message,
+                icon: 'error',
+                confirmButtonColor: 'rgb(54, 69, 116)',
+                confirmButtonText: 'Ok'
+              });
+            }
           }
           else {
             Swal.fire({

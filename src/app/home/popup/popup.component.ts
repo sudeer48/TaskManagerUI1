@@ -7,7 +7,7 @@ import { PrimeNGConfig } from 'primeng/api';
   templateUrl: './popup.component.html',
   styleUrls: ['./popup.component.scss']
 })
-export class MainComponent implements OnInit {
+export class PopupComponent implements OnInit {
 
   pdfSrc = "https://vadimdez.github.io/ng2-pdf-viewer/assets/pdf-test.pdf";
 

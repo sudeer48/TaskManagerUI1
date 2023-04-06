@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MainComponent } from './popup/popup.component';
+import { PopupComponent } from './popup/popup.component';
 import { StudentDetailsComponent } from './student-details/student-details.component';
 import { StudentregistrationComponent } from './studentregistration/studentregistration.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
@@ -17,18 +17,13 @@ import { PasswordModule } from 'primeng/password';
 
 @NgModule({
   declarations: [
-    MainComponent,
-    //DetailsComponent,
+    PopupComponent,
     HomeComponent,
     StudentDetailsComponent,
     StudentregistrationComponent,
-    //ForgotPasswordComponent
   ],
   imports: [
-    //BrowserModule,
     CommonModule,
-    //AppRoutingModule,
-    //HttpClientModule,
     ReactiveFormsModule,
     HomeRoutingModule,
     PdfViewerModule,

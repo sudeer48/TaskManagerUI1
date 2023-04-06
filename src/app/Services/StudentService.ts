@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { Student } from '../Models/Student';
@@ -21,13 +21,15 @@ export class StdService {
   private isLeaveApply = new Subject<number>();
   //SharingData = new Subject();//subject
 
+  textAddedVent = new Subject<boolean>();
+
   getAll(): Observable<Student[]> {
     return this.http.get<Student[]>(baseUrl + getData);
 
   }
 
-  login(login: LoginModel):Observable<any>{
-    return this.http.post<LoginModel>(baseUrl + loginUser,login);
+  login(login: LoginModel): Observable<any> {
+    return this.http.post<LoginModel>(baseUrl + loginUser, login);
   }
   // changeDataSubject(data: any) {
   //   this.SharingData.next(data.value);
@@ -44,5 +46,11 @@ export class StdService {
 
   deleteData(studentid: Student): Observable<any> {
     return this.http.post(baseUrl + deleteData, studentid)
+  }
+
+  getText()
+  {
+    debugger;
+    this.textAddedVent.next(true);
   }
 }

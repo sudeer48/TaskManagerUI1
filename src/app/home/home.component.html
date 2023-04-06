@@ -25,7 +25,11 @@
         <a class="nav-link" href="#" (click)="logout()">logout</a>
       </li>
     </ul> -->
-
+    <ul class="navbar-nav" *ngIf="isActive">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Test Link for Hide</a>
+      </li>
+    </ul>
    
   </div>
   <form class="form-inline">

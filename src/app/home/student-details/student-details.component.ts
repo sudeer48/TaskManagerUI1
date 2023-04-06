@@ -92,4 +92,8 @@ export class StudentDetailsComponent implements OnInit {
     //.add(() => this.loading = false);
   }
 
+  getValue()
+  {
+    this.studentservice.getText();
+  }
 }
