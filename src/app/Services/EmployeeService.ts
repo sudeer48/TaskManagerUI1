@@ -5,7 +5,7 @@ import { Student } from '../Models/Student';
 import { LoginModel } from '../Models/LoginModel';
 import { RoleInformation } from '../Models/RoleInformation';
 //const baseUrl = 'https://localhost:44368/api';
-const baseUrl = 'https://localhost:44368/SQL_UserManagement/api';  //
+const baseUrl = 'https://localhost:44368/Employee/api';  //
 
 const getData = '/GetEmployeeDetails';
 const postData = '/CreateEmployee';

@@ -43,11 +43,9 @@ export class LoginComponent implements OnInit {
   Authenticate() {
     debugger;
     let leaveRequest = this.form.value;
-    console.log(this._auth.login(leaveRequest));
-    //if (this._auth.login(leaveRequest)) {
-      debugger;
       this.employeeservice.login(leaveRequest)
         .subscribe((item: any) => {
+          debugger;
           if (item) {
             if (item.response) {
               debugger;
