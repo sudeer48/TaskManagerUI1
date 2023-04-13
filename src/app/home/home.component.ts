@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { AuthguardServiceService } from '../Services/authguard-service.service';
-import { StdService } from '../Services/StudentService';
+import { EmployeeService } from '../Services/EmployeeService';
 //import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -12,10 +12,10 @@ import { StdService } from '../Services/StudentService';
 export class HomeComponent implements OnInit {
   closeResult = '';
   isActive: boolean = false;
-  constructor(private authguardServiceService: AuthguardServiceService, private router: Router, private studentService: StdService) { }
+  constructor(private authguardServiceService: AuthguardServiceService, private router: Router, private employeeservice: EmployeeService) { }
 
   ngOnInit(): void {
-    this.studentService.textAddedVent.subscribe(
+    this.employeeservice.textAddedVent.subscribe(
       data => {
         this.isActive = data;
       }

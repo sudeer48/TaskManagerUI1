@@ -38,6 +38,14 @@
         <input id="grade" type="text" class="form-control" formControlName="grade" name="grade">
       </div>
       <div class="form-group col-md-6">
+        <label for="role">Role <span class="text-danger">*</span></label>       
+        <select class="form-control" formControlName="roleId">
+          <option value="">Choose role</option>
+          <option *ngFor="let roles of roleData" [value]="roles.roleId">{{roles.roleName}}</option>
+        </select>
+
+      </div>
+      <div class="form-group col-md-6">
         <label for="username">UserName <span class="text-danger">*</span></label>
         <input id="username" type="text" class="form-control" formControlName="username" name="username">
       </div>
@@ -55,5 +63,5 @@
 </form>
 
 <div class="container">
-  <app-student-details [data1]="studentData"></app-student-details>
+  <app-employee-details [data1]="studentData"></app-employee-details>
 </div>

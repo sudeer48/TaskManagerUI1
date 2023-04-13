@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { AuthguardServiceService } from '../Services/authguard-service.service';
-import { StdService } from '../Services/StudentService';
+import { EmployeeService } from '../Services/EmployeeService';
 import { PrimeNGConfig } from 'primeng/api';
 import {ForgotPasswordComponent} from '../forgot-password/forgot-password.component'
 import { PasswordModule } from 'primeng/password';
@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   //studentservice: any;
   displayModal: boolean;
   
-  constructor(private formBuilder: FormBuilder, private studentservice: StdService, private router: Router,
+  constructor(private formBuilder: FormBuilder, private employeeservice: EmployeeService, private router: Router,
     private _auth: AuthguardServiceService,private primengConfig: PrimeNGConfig) {
 
     if (this._auth.loggedIn) {
@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
     console.log(this._auth.login(leaveRequest));
     //if (this._auth.login(leaveRequest)) {
       debugger;
-      this.studentservice.login(leaveRequest)
+      this.employeeservice.login(leaveRequest)
         .subscribe((item: any) => {
           if (item) {
             if (item.response) {

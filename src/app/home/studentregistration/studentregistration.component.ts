@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { StdService } from 'src/app/Services/StudentService';
+import { EmployeeService } from 'src/app/Services/EmployeeService';
 import Swal from 'sweetalert2';
-import { StudentDetailsComponent } from '../student-details/student-details.component';
+import { EmployeeDetailsComponent } from '../employee-details/employee-details.component';
 
 @Component({
   selector: 'app-studentregistration',
@@ -14,13 +14,14 @@ export class StudentregistrationComponent implements OnInit {
   form: FormGroup;
   studentId2: any;
   studentData: any;
-  @ViewChild(StudentDetailsComponent) child: any;
+  roleData: any;
+  @ViewChild(EmployeeDetailsComponent) child: any;
   message: string;
-  constructor(private formBuilder: FormBuilder, private studentservice: StdService) {
+  constructor(private formBuilder: FormBuilder, private employeeservice: EmployeeService) {
   }
 
   autoChangeVal() {
-    this.studentservice.getAll().subscribe((data: any) => {
+    this.employeeservice.getAll().subscribe((data: any) => {
       this.studentId2 = data[data.length - 1].id;
       this.form.controls['id'].patchValue(++this.studentId2);
     })
@@ -32,10 +33,12 @@ export class StudentregistrationComponent implements OnInit {
       name: ['', [Validators.required]],
       schoolId: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
       grade: [''],
+      roleId: ['',[Validators.required]],
       username: [''],
       password: ['']
     });
     this.autoChangeVal();
+    this.getRoles();
   }
 
   ngAfterViewInit() {
@@ -43,16 +46,23 @@ export class StudentregistrationComponent implements OnInit {
     //alert(this.message);
   }
 
+  getRoles() {
+    this.employeeservice.getRoleDetails().subscribe((roles: any) => {
+      debugger;
+      this.roleData = roles;
+    })
+  }
   RegisterStudent() {
+    debugger;
     let leaveRequest = this.form.value;
-    this.studentservice.insertData(leaveRequest)
+    this.employeeservice.insertData(leaveRequest)
       .subscribe((item: any) => {
         debugger;
         if (item) {
           if (item.response) {
             if (item.isSuccess) {
               this.form.reset();
-              this.studentservice.getAll().subscribe((data: any) => {
+              this.employeeservice.getAll().subscribe((data: any) => {
                 debugger;
                 this.studentData = data;
                 this.studentId2 = data[data.length - 1].id;

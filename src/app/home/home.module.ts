@@ -4,7 +4,7 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PopupComponent } from './popup/popup.component';
-import { StudentDetailsComponent } from './student-details/student-details.component';
+import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
 import { StudentregistrationComponent } from './studentregistration/studentregistration.component';
 import { PdfViewerModule } from 'ng2-pdf-viewer';
 import {ButtonModule} from 'primeng/button';
@@ -19,7 +19,7 @@ import { PasswordModule } from 'primeng/password';
   declarations: [
     PopupComponent,
     HomeComponent,
-    StudentDetailsComponent,
+    EmployeeDetailsComponent,
     StudentregistrationComponent,
   ],
   imports: [

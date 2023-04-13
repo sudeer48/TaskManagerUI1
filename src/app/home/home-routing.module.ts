@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from '../login/login.component';
 import { PopupComponent } from './popup/popup.component';
 import { HomeComponent } from './home.component';
-import { StudentDetailsComponent } from './student-details/student-details.component';
+import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
 import { StudentregistrationComponent } from './studentregistration/studentregistration.component';
 
 
@@ -13,7 +13,7 @@ const routes: Routes = [
     path: 'main', component: PopupComponent
   },
   {
-    path: 'studentdetails', component: StudentDetailsComponent
+    path: 'studentdetails', component: EmployeeDetailsComponent
   },
   {
     path: 'studentregistration', component: StudentregistrationComponent

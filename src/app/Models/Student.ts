@@ -5,5 +5,6 @@ export class Student{
      schoolId: string;
      grade: string;
      username:string;
-     password:string;   
+     password:string;
+     roleId:number;
 }

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, map, Observable } from 'rxjs';
 import { LoginModel } from '../Models/LoginModel';
-import { StdService } from './StudentService';
+import { EmployeeService } from './EmployeeService';
 
 const baseUrl = 'https://localhost:44368/SQL_UserManagement/api';
 const loginUser = '/Authentication';
@@ -13,7 +13,7 @@ export class AuthguardServiceService {
   private userSubject: BehaviorSubject<LoginModel | null>;
   public user: Observable<LoginModel | null>;
 
-  constructor(private studentservice: StdService, private http: HttpClient) {
+  constructor(private studentservice: EmployeeService, private http: HttpClient) {
     this.userSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('user')!));
     this.user = this.userSubject.asObservable();
   }

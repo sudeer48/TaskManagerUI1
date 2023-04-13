@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
 import { Student } from '../Models/Student';
 import { LoginModel } from '../Models/LoginModel';
+import { RoleInformation } from '../Models/RoleInformation';
 //const baseUrl = 'https://localhost:44368/api';
 const baseUrl = 'https://localhost:44368/SQL_UserManagement/api';  //
 
@@ -10,12 +11,13 @@ const getData = '/GetEmployeeDetails';
 const postData = '/CreateEmployee';
 const deleteData = '/DeleteRecord';
 const loginUser = '/Authentication';
+const getRole = '/GetRoleDetails';
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class StdService {
+export class EmployeeService {
 
   constructor(private http: HttpClient) { }
   private isLeaveApply = new Subject<number>();
@@ -41,13 +43,18 @@ export class StdService {
     return this.isLeaveApply.asObservable(); //it returns as an observable to which the receiver funtion will subscribe
   }
   insertData(students: Student): Observable<any> {
+    debugger;
     return this.http.post<Student>(baseUrl + postData, students)
   }
 
   deleteData(studentid: Student): Observable<any> {
+    debugger;
     return this.http.post(baseUrl + deleteData, studentid)
   }
 
+  getRoleDetails():Observable<any>{
+    return this.http.get<RoleInformation[]>(baseUrl + getRole);
+  }
   getText()
   {
     debugger;

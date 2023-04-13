@@ -1,20 +1,16 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Student } from 'src/app/Models/Student';
-import { StdService } from 'src/app/Services/StudentService';
+import { EmployeeService } from 'src/app/Services/EmployeeService';
 import Swal from 'sweetalert2';
 import { StudentregistrationComponent } from '../studentregistration/studentregistration.component';
 import { faTrash,faEdit } from '@fortawesome/free-solid-svg-icons';
 
-
-
-
-
 @Component({
-  selector: 'app-student-details',
-  templateUrl: './student-details.component.html',
-  styleUrls: ['./student-details.component.scss']
+  selector: 'app-employee-details',
+  templateUrl: './employee-details.component.html',
+  styleUrls: ['./employee-details.component.scss']
 })
-export class StudentDetailsComponent implements OnInit {
+export class EmployeeDetailsComponent implements OnInit {
 
   faTrash = faTrash;
   faEdit = faEdit;
@@ -24,7 +20,7 @@ export class StudentDetailsComponent implements OnInit {
   studentId: any;
   Component1Data: any = '';
   displayBasic2: boolean;
-  constructor(public studentservice: StdService,public studentregistration:StudentregistrationComponent) { 
+  constructor(public employeeservice: EmployeeService,public studentregistration:StudentregistrationComponent) { 
   }
 
   ngOnInit(): void {
@@ -33,7 +29,7 @@ export class StudentDetailsComponent implements OnInit {
   }
 
   retrieveStudents(): void {
-    this.studentservice.getAll()
+    this.employeeservice.getAll()
       .subscribe({
         next: (data) => {
           this.data1 = data;
@@ -52,9 +48,10 @@ export class StudentDetailsComponent implements OnInit {
 // }
 
   DeleteStudent(Empid: number) {
+    debugger;
     let cancelLeave = new Student();
     cancelLeave.id = Empid;
-    this.studentservice.deleteData(cancelLeave)
+    this.employeeservice.deleteData(cancelLeave)
       .subscribe((item: any) => {
         debugger;
         if (item) {
@@ -94,6 +91,6 @@ export class StudentDetailsComponent implements OnInit {
 
   getValue()
   {
-    this.studentservice.getText();
+    this.employeeservice.getText();
   }
 }
