@@ -4,7 +4,6 @@ import { Observable, Subject } from 'rxjs';
 import { Student } from '../Models/Student';
 import { LoginModel } from '../Models/LoginModel';
 import { RoleInformation } from '../Models/RoleInformation';
-//const baseUrl = 'https://localhost:44368/api';
 const baseUrl = 'https://localhost:44368/Employee/api';  //
 
 const getData = '/GetEmployeeDetails';
@@ -47,9 +46,10 @@ export class EmployeeService {
     return this.http.post<Student>(baseUrl + postData, students)
   }
 
-  deleteData(studentid: Student): Observable<any> {
+  deleteData(empId: number): Observable<any> {
     debugger;
-    return this.http.post(baseUrl + deleteData, studentid)
+    var params = { empId: empId };
+    return this.http.delete(baseUrl + deleteData, {params})
   }
 
   getRoleDetails():Observable<any>{

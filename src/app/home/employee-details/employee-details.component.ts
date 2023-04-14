@@ -48,10 +48,7 @@ export class EmployeeDetailsComponent implements OnInit {
 // }
 
   DeleteStudent(Empid: number) {
-    debugger;
-    let cancelLeave = new Student();
-    cancelLeave.id = Empid;
-    this.employeeservice.deleteData(cancelLeave)
+    this.employeeservice.deleteData(Empid)
       .subscribe((item: any) => {
         debugger;
         if (item) {
