@@ -4,33 +4,35 @@ import { Observable, Subject } from 'rxjs';
 import { Student } from '../Models/Student';
 import { LoginModel } from '../Models/LoginModel';
 import { RoleInformation } from '../Models/RoleInformation';
-const baseUrl = 'https://localhost:44368/Employee/api';  //
+import { environment } from 'src/environments/environment.local';
+//const baseUrl = 'https://localhost:44368/Employee/api';  //
 
-const getData = '/GetEmployeeDetails';
-const postData = '/CreateEmployee';
-const deleteData = '/DeleteRecord';
-const loginUser = '/Authentication';
-const getRole = '/GetRoleDetails';
+const getData = '/Employee/api/GetEmployeeDetails';
+const postData = '/Employee/api/CreateEmployee';
+const deleteData = '/Employee/api/DeleteRecord';
+const loginUser = '/Employee/api/Authentication';
+const getRole = '/Employee/api/GetRoleDetails';
 
 @Injectable({
   providedIn: 'root'
 })
 
 export class EmployeeService {
-
-  constructor(private http: HttpClient) { }
+  public baseHttpUrl: any;
+  constructor(private http: HttpClient) { 
+    this.baseHttpUrl=environment.ApplicationUrl;
+  }
   private isLeaveApply = new Subject<number>();
   //SharingData = new Subject();//subject
 
   textAddedVent = new Subject<boolean>();
 
   getAll(): Observable<Student[]> {
-    return this.http.get<Student[]>(baseUrl + getData);
-
+    return this.http.get<Student[]>(this.baseHttpUrl + getData);
   }
 
   login(login: LoginModel): Observable<any> {
-    return this.http.post<LoginModel>(baseUrl + loginUser, login);
+    return this.http.post<LoginModel>(this.baseHttpUrl + loginUser, login);
   }
   // changeDataSubject(data: any) {
   //   this.SharingData.next(data.value);
@@ -43,17 +45,17 @@ export class EmployeeService {
   }
   insertData(students: Student): Observable<any> {
     debugger;
-    return this.http.post<Student>(baseUrl + postData, students)
+    return this.http.post<Student>(this.baseHttpUrl + postData, students)
   }
 
   deleteData(empId: number): Observable<any> {
     debugger;
     var params = { empId: empId };
-    return this.http.delete(baseUrl + deleteData, {params})
+    return this.http.delete(this.baseHttpUrl + deleteData, {params})
   }
 
   getRoleDetails():Observable<any>{
-    return this.http.get<RoleInformation[]>(baseUrl + getRole);
+    return this.http.get<RoleInformation[]>(this.baseHttpUrl + getRole);
   }
   getText()
   {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Route, Router } from '@angular/router';
 import { AuthguardServiceService } from '../Services/authguard-service.service';
 import { EmployeeService } from '../Services/EmployeeService';
+import { AdministrationService } from '../Services/AdministrationService';
 //import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -12,9 +13,26 @@ import { EmployeeService } from '../Services/EmployeeService';
 export class HomeComponent implements OnInit {
   closeResult = '';
   isActive: boolean = false;
-  constructor(private authguardServiceService: AuthguardServiceService, private router: Router, private employeeservice: EmployeeService) { }
+  menuDetails: any;
+  // menu = [{
+  //   "text": "Main",
+  //   "routerLink": "main"
+  // },
+  // {
+  //   "text": "Details",
+  //   "routerLink": "studentdetails"
+  // },
+  // {
+  //   "text": "Student Registration",
+  //   "routerLink": "studentregistration"
+  // }];
+
+  constructor(private authguardServiceService: AuthguardServiceService,
+    private router: Router, private employeeservice: EmployeeService,
+    private administrativeService: AdministrationService) { }
 
   ngOnInit(): void {
+    this.retrieveMenuItems();
     this.employeeservice.textAddedVent.subscribe(
       data => {
         this.isActive = data;
@@ -26,6 +44,15 @@ export class HomeComponent implements OnInit {
     debugger;
     this.authguardServiceService.logout();
     this.router.navigate(['']);
+  }
+
+  retrieveMenuItems(): void {
+    debugger;
+    this.administrativeService.getMenuItem()
+      .subscribe((data: any) => {
+        debugger;
+        this.menuDetails = data;
+      });
   }
 
   // open(content: any) {
