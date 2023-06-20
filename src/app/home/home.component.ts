@@ -12,7 +12,7 @@ import { AdministrationService } from '../Services/AdministrationService';
 })
 export class HomeComponent implements OnInit {
   closeResult = '';
-  isActive: boolean = false;
+  isActive: boolean = true;
   menuDetails: any;
   // menu = [{
   //   "text": "Main",
@@ -47,7 +47,6 @@ export class HomeComponent implements OnInit {
   }
 
   retrieveMenuItems(): void {
-    debugger;
     this.administrativeService.getMenuItem()
       .subscribe((data: any) => {
         debugger;

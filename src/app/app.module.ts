@@ -17,6 +17,7 @@ import { ButtonModule } from 'primeng/button';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { JwtinterceptorInterceptor } from './helpers/jwtinterceptor.interceptor';
 import { Password, PasswordModule } from 'primeng/password';
+import { MaincontentComponent } from './home/maincontent/maincontent.component';
 
 
 
@@ -24,7 +25,8 @@ import { Password, PasswordModule } from 'primeng/password';
   declarations: [
     AppComponent,
     LoginComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    MaincontentComponent
   ],
   imports: [
     BrowserModule,

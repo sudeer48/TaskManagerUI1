@@ -4,6 +4,7 @@ import { EmployeeService } from 'src/app/Services/EmployeeService';
 import Swal from 'sweetalert2';
 import { StudentregistrationComponent } from '../studentregistration/studentregistration.component';
 import { faTrash,faEdit } from '@fortawesome/free-solid-svg-icons';
+import { UserMessage } from 'src/app/Models/UserMessage';
 
 @Component({
   selector: 'app-employee-details',
@@ -20,6 +21,9 @@ export class EmployeeDetailsComponent implements OnInit {
   studentId: any;
   Component1Data: any = '';
   displayBasic2: boolean;
+
+  userMessageDetails:UserMessage[];
+
   constructor(public employeeservice: EmployeeService,public studentregistration:StudentregistrationComponent) { 
   }
 
@@ -37,6 +41,18 @@ export class EmployeeDetailsComponent implements OnInit {
         error: (e) => console.error(e)
       });
   }
+
+
+  getUserMessageDetails(): void {
+    this.employeeservice.getUserMessageDetails()
+      .subscribe({
+        next: (data) => {
+          this.userMessageDetails = data;
+        },
+        error: (e) => console.error(e)
+      });
+  }
+
 
   EditStudent(EmpId:number)
   {

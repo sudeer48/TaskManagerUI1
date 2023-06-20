@@ -5,10 +5,16 @@ import { PopupComponent } from './popup/popup.component';
 import { HomeComponent } from './home.component';
 import { EmployeeDetailsComponent } from './employee-details/employee-details.component';
 import { StudentregistrationComponent } from './studentregistration/studentregistration.component';
+import { LMenuDetailsComponent } from './l-menu-details/l-menu-details.component';
+import { ApplyComponent } from '../leaves/apply/apply.component';
+import { MaincontentComponent } from './maincontent/maincontent.component';
 
 
 const routes: Routes = [
 { path: '', component: HomeComponent, children: [
+  {
+    path: 'maincontent', component: MaincontentComponent
+  },
   {
     path: 'main', component: PopupComponent
   },
@@ -17,6 +23,9 @@ const routes: Routes = [
   },
   {
     path: 'studentregistration', component: StudentregistrationComponent
+  },
+  {
+    path:'leftmenudetails',component:ApplyComponent
   }
 ]},
 

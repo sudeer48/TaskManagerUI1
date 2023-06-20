@@ -12,6 +12,7 @@ import { DialogModule } from 'primeng/dialog';
 import {TableModule } from 'primeng/table'; 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PasswordModule } from 'primeng/password';
+import { LMenuDetailsComponent } from './l-menu-details/l-menu-details.component';
 //import { ForgotPasswordComponent } from '../forgot-password/forgot-password.component';
 
 
@@ -21,6 +22,7 @@ import { PasswordModule } from 'primeng/password';
     HomeComponent,
     EmployeeDetailsComponent,
     StudentregistrationComponent,
+    LMenuDetailsComponent,
   ],
   imports: [
     CommonModule,

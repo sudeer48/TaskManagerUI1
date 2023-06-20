@@ -5,6 +5,7 @@ import { Student } from '../Models/Student';
 import { LoginModel } from '../Models/LoginModel';
 import { RoleInformation } from '../Models/RoleInformation';
 import { environment } from 'src/environments/environment.local';
+import { UserMessage } from '../Models/UserMessage';
 //const baseUrl = 'https://localhost:44368/Employee/api';  //
 
 const getData = '/Employee/api/GetEmployeeDetails';
@@ -12,6 +13,7 @@ const postData = '/Employee/api/CreateEmployee';
 const deleteData = '/Employee/api/DeleteRecord';
 const loginUser = '/Employee/api/Authentication';
 const getRole = '/Employee/api/GetRoleDetails';
+const getUserMessageDetails = '/Employee/api/GetUserMessageDetails';
 
 @Injectable({
   providedIn: 'root'
@@ -29,6 +31,10 @@ export class EmployeeService {
 
   getAll(): Observable<Student[]> {
     return this.http.get<Student[]>(this.baseHttpUrl + getData);
+  }
+
+  getUserMessageDetails(): Observable<UserMessage[]> {
+    return this.http.get<UserMessage[]>(this.baseHttpUrl + getUserMessageDetails);
   }
 
   login(login: LoginModel): Observable<any> {
